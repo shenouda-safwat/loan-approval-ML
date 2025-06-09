@@ -45,7 +45,7 @@ The dataset contains several applicant-related features:
 
 ---
 
-## 📊 Feature Engineering & Dimensionality Reduction
+## 📊 Feature Extraction & Dimensionality Reduction
 
 - Applied **Principal Component Analysis (PCA)** to reduce dimensionality  
 - Retained essential components to capture most of the variance  
