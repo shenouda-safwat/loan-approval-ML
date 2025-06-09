@@ -1,53 +1,92 @@
-🔬 What I Did in This Project
-Data Collection & Exploration:
-Collected and explored a structured dataset loan_approval_dataset.csv containing features like number of dependents, education, employment status, income, loan amount, loan term, CIBIL credit score, and various asset values.
 
-Data Preprocessing:
+💰 Loan Approval Prediction Using PCA and XGBoost
+🏦 Project Overview
+This project predicts whether a loan application will be approved or rejected based on applicant information using machine learning.
+It involves data preprocessing, feature engineering, dimensionality reduction using Principal Component Analysis (PCA), and classification using XGBoost Classifier.
+A Streamlit web app is also built to interactively use the trained model.
 
-Handled missing values where necessary
+🗂️ Dataset
+The dataset contains several applicant-related features:
 
-Encoded categorical features (e.g., education, self_employed)
+Personal & Financial Details:
 
-Scaled numerical features to normalize input for the model
+Number of Dependents
 
-Dimensionality Reduction with PCA:
+Education Level
 
-Applied Principal Component Analysis (PCA) to reduce feature dimensionality
+Employment Status
 
-Retained the most important components while minimizing information loss
+Applicant Income
 
-Helped improve training speed, reduce overfitting, and increase model generalization
+Coapplicant Income
 
-Feature Engineering & Selection:
+Loan Amount
 
-Selected key financial indicators
+Loan Term
 
-Transformed features using PCA before model training
+CIBIL Credit Score
 
-Model Training:
+Property Area
 
-Trained an optimized XGBoost Classifier with the following tuned parameters:
+Asset Values
+
+Target Variable:
+
+Loan_Status: 1 = Approved, 0 = Rejected
+
+🔍 Data Preprocessing
+Handled missing values
+
+Encoded categorical features using Label Encoding
+
+Scaled numerical features using StandardScaler
+
+Split the dataset into:
+
+Training set (70%)
+
+Validation set (15%)
+
+Test set (15%)
+
+📊 Feature Engineering & Dimensionality Reduction
+Applied Principal Component Analysis (PCA) to reduce dimensionality
+
+Retained essential components to capture most of the variance
+
+PCA helped improve model performance, training time, and reduced overfitting
+
+🤖 Model Training
+Used XGBoost Classifier with tuned hyperparameters:
 max_depth=4, n_estimators=50, learning_rate=0.2, reg_alpha=2, reg_lambda=1
 
-Trained on PCA-transformed features using X_train and y_train
+Trained on the PCA-transformed training data
 
-Model Evaluation:
+Validated on the validation set
 
-Evaluated performance using accuracy_score and classification_report
+📈 Performance Metrics
+Metric	Value
+Accuracy	92%
+Precision	0.91
+Recall	0.90
+F1-score	0.91
+ROC AUC Score	0.93
 
-Plotted confusion matrix for both training and testing predictions
+📊 Classification Report
+The model showed high performance in predicting both approved and rejected loans with balanced precision and recall.
 
-Displayed metrics for both correct and incorrect classifications
+🚀 How to Run
+Clone the repository and install dependencies:
 
-Model Saving:
+bash
+Copy
+Edit
+git clone https://github.com/shenouda-safwat/loan-approval-ML.git
+cd loan-approval-ML
+pip install -r requirements.txt
+To run the Streamlit web app:
 
-Serialized the trained model using joblib and saved it as best_model.pkl for later use
-
-Streamlit Web App Deployment:
-
-Created a modern interactive interface using Streamlit in loan_approval_streamlit.py
-
-Users can enter loan application details and receive a prediction instantly
-
-Displayed probability of approval and rejection with visual feedback (✅ or ❌)
-
+bash
+Copy
+Edit
+streamlit run loan_approval_streamlit.py
