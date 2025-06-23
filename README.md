@@ -1,94 +1,46 @@
-# 💰 Loan Approval Prediction Using PCA and XGBoost
+# 🎬 Netflix Stock Price Prediction Using Linear Regression
 
 ---
 
-## 🏦 Project Overview
+## 📈 Project Overview
 
-This project predicts whether a loan application will be **approved or rejected** based on applicant information using **machine learning**.  
-It involves **data preprocessing**, **feature engineering**, **dimensionality reduction using Principal Component Analysis (PCA)**, and classification using **XGBoost Classifier**.  
-A **Streamlit web app** is also built to interactively use the trained model.
+This project predicts the **closing stock price** of Netflix using **Linear Regression** based on historical stock data.  
+It includes **data preprocessing**, **technical feature engineering**, **time-series modeling**, and comprehensive evaluation using multiple **regression metrics**.  
+The model provides accurate predictions and can serve as the base for more complex forecasting systems.
 
 ---
 
 ## 🗂️ Dataset
 
-The dataset contains several applicant-related features:
+The dataset contains daily historical stock data for Netflix:
 
-### **Personal & Financial Details**
-- Number of Dependents  
-- Education Level  
-- Employment Status  
-- Applicant Income  
-- Coapplicant Income  
-- Loan Amount  
-- Loan Term  
-- CIBIL Credit Score  
-- Property Area  
-- Asset Values  
+### **Price & Technical Features**
+- `Open`  
+- `High`  
+- `Low`  
+- `Volume`  
+- `MA50` – 50-day Moving Average  
+- `MA200` – 200-day Moving Average  
 
 ### **Target Variable**
-- `Loan_Status`:  
-  - `1` = Approved  
-  - `0` = Rejected  
+- `Close`: Closing stock price (regression target)
+
+📦 Dataset File: `archive.zip`
 
 ---
 
 ## 🔍 Data Preprocessing
 
-- Handled missing values  
-- Encoded categorical features using **Label Encoding**  
-- Scaled numerical features using **StandardScaler**  
-- Split the dataset into:
-  - **Training set** (70%)  
-  - **Validation set** (15%)  
-  - **Test set** (15%)  
+- Handled missing values (if any)  
+- Created moving averages: **MA50**, **MA200**  
+- Scaled features if necessary  
+- Applied **time-series split** (no shuffling):  
+  - **Training set**: 80%  
+  - **Test set**: 20%
 
 ---
 
-## 📊 Feature Extraction & Dimensionality Reduction
+## 📊 Feature Selection
 
-- Applied **Principal Component Analysis (PCA)** to reduce dimensionality  
-- Retained essential components to capture most of the variance  
-- PCA helped:
-  - Improve model performance  
-  - Speed up training  
-  - Reduce overfitting  
-
----
-
-## 🤖 Model Training
-
-- Used **XGBoost Classifier** with tuned hyperparameters:  
-  ```python
-  max_depth = 4  
-  n_estimators = 50  
-  learning_rate = 0.2  
-  reg_alpha = 2  
-  reg_lambda = 1
-
-
-
- Performance Metrics
-Metric	Value
-Accuracy	92%
-Precision	0.91
-Recall	0.90
-F1-score	0.91
-ROC AUC	0.93
-
-📊 Classification Report
-The model showed high performance in predicting both approved and rejected loans, with balanced precision and recall values.
-
-🚀 How to Run
-Clone the repository and install dependencies:
-
-
-git clone https://github.com/shenouda-safwat/loan-approval-ML.git
-cd loan-approval-ML
-pip install -r requirements.txt
-To run the Streamlit web app:
-
-
-streamlit run loan_approval_streamlit.py
-
-# sheNouda saFwat
+```python
+features = ['Open', 'High', 'Low', 'Volume', 'MA50', 'MA200']
